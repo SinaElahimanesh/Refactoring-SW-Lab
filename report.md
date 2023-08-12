@@ -1,5 +1,53 @@
 # گزارش آزمایش چهارم درس آزمایشگاه مهندسی نرم‌افزار (بازآرایی کد)
 
+## گزارش
+
+### بازآرایی Facade
+برای این بازآرایی دو کلاس CodeGenerator و ٍLexialAnalyzer را مورد بازآرایی قرار دادیم و دور آنها Facade کشیدیم. به این ترتیب که دسترسی به آنها از طریق فسادشان امکان‌پذیر شده است. همچنین باید تمامی متدهایی که برای دسترسی به آنها لازم است را هم به فسادشان منتقل کنیم. به این ترتیب در تصاویر زیر داریم:
+<img width="889" alt="Screenshot 1402-05-21 at 12 04 53 PM" src="https://github.com/SinaElahimanesh/Refactoring-SW-Lab/assets/59636948/f9380814-6c79-4f10-a29e-b98007650eec">
+
+<img width="789" alt="Screenshot 1402-05-21 at 12 05 11 PM" src="https://github.com/SinaElahimanesh/Refactoring-SW-Lab/assets/59636948/3cb58107-e52e-4af5-a9f3-c23c5163765d">
+
+همچنین پس از آن باید Find Usages را بزنیم و هرجایی که از آن استفاده شده است را هم تغییر دهیم. به این ترتیب که به جای دسترسی مستقیم از فساد به آن دسترسی داشته باشیم.
+<img width="1014" alt="Screenshot 1402-05-21 at 12 08 47 PM" src="https://github.com/SinaElahimanesh/Refactoring-SW-Lab/assets/59636948/68ac059e-2bae-4b3c-aa38-5b21ce423e9e">
+
+
+## بازآرایی استفاده از Polymorphism به جای شرط
+در این بازآرایی کلاس Action را به یک ابسترکت کلاس تبدیل می‌کنیم و سپس فیلد اکشن را از آن حذف می‌کنیم و فقط getAction می‌زنیم. سپس سه کلاس می‌زنیم که از آن extend می‌کنند. هریک از این کلاس‌ها از پلیمورفیسم استفاده می‌کنیم و ان استرینگ‌ها را override می‌کنیم.
+<img width="540" alt="Screenshot 1402-05-21 at 12 19 58 PM" src="https://github.com/SinaElahimanesh/Refactoring-SW-Lab/assets/59636948/902acfd5-c63c-490e-a904-76ae9ff844ac">
+
+<img width="496" alt="Screenshot 1402-05-21 at 12 20 11 PM" src="https://github.com/SinaElahimanesh/Refactoring-SW-Lab/assets/59636948/5b5b53d6-fc80-40be-9615-4a1a7e5fcdf3">
+
+<img width="540" alt="Screenshot 1402-05-21 at 12 20 23 PM" src="https://github.com/SinaElahimanesh/Refactoring-SW-Lab/assets/59636948/2ebe9c87-3ffc-4c4e-a192-46193a356639">
+
+<img width="605" alt="Screenshot 1402-05-21 at 12 20 35 PM" src="https://github.com/SinaElahimanesh/Refactoring-SW-Lab/assets/59636948/c58e9eef-4e26-405a-aadc-f143fcba6030">
+
+سپس هرجایی از آن استفاده شده درست می‌کنیم.
+
+<img width="1049" alt="Screenshot 1402-05-21 at 12 23 36 PM" src="https://github.com/SinaElahimanesh/Refactoring-SW-Lab/assets/59636948/7bb0c15e-2913-4a3c-a7bf-7cd0593d6af4">
+
+به عنوان نمونه از getAction که برای action تعریف کرده بودیم و آن را اورراید کرده بودیم در این شروط استفاده می‌کنیم.
+
+<img width="1045" alt="Screenshot 1402-05-21 at 12 24 26 PM" src="https://github.com/SinaElahimanesh/Refactoring-SW-Lab/assets/59636948/6be5dc3a-4a3f-4b53-9b70-f388cdc490d6">
+
+
+ ## بازآرایی Separate Query From Modifier
+ این بازآرایی را در کلاس Memory روی دو تابع saveMemory و getTemp انجام داده‌ایم. همچنین روی توابع دیگر این کلاس نظیر getDateAddress هم این کار ممکن است. به این ترتیب که تغییرات را از گرفتن مقدار جدا کرده‌ایم و دو تابع جدا کرده‌ایم.
+ 
+<img width="686" alt="Screenshot 1402-05-21 at 12 28 17 PM" src="https://github.com/SinaElahimanesh/Refactoring-SW-Lab/assets/59636948/da6274c8-6719-4901-8526-44005f511ac9">
+
+سپس در جاهایی که از آنها استفاده شده است هر دو تابع را صدا می‌زنیم.
+
+<img width="1044" alt="Screenshot 1402-05-21 at 12 29 00 PM" src="https://github.com/SinaElahimanesh/Refactoring-SW-Lab/assets/59636948/beb35311-5711-4ed2-8b4a-626c85ea195a">
+
+<img width="714" alt="Screenshot 1402-05-21 at 12 29 21 PM" src="https://github.com/SinaElahimanesh/Refactoring-SW-Lab/assets/59636948/59a84ec1-ea9e-4539-8a1a-cb8efd30aee3">
+
+(تعداد این موارد زیاد بود و فقط دو مورد از آنها را آورده‌ایم)
+
+
+
+
+
 ## پرسش‌ها
 
 ۱-
