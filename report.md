@@ -59,7 +59,22 @@
 
 <img width="1027" alt="Screenshot 1402-05-21 at 12 37 18 PM" src="https://github.com/SinaElahimanesh/Refactoring-SW-Lab/assets/59636948/4f52bbef-325b-49be-9c00-99d40e7e49c2">
 
-## بازآرایی‌های دیگر 
+## بازآرایی‌های دیگر (Extract Method)
+
+در اینجا هنگامی که به Parser و داخل switch case ان نگاه می‌کنیم میبینیم که دو مورد از کیس‌ها بسیار طولانی هستند و همچنین مواردی به هم مرتبط و کدی یکپارچه دارند. هرچند که این کد به هم مرتبط و یکپارچه قابل جداسازی است و می‌تواند تبدیل به یک متد شود ولی به صورت اضافی این کیس‌ها را طولانی کرده است و به این ترتیب به صورت نامطلوبی وجود دارد. در نتیجه این دو قسمت را اکسترکت متد می‌کنیم.
+
+<img width="858" alt="Screenshot 1402-05-21 at 12 47 50 PM" src="https://github.com/SinaElahimanesh/Refactoring-SW-Lab/assets/59636948/0ec6c8a9-2004-4b04-912e-0e1ff3e608ea">
+
+متدهای اکسترکت شده:
+
+<img width="704" alt="Screenshot 1402-05-21 at 12 48 02 PM" src="https://github.com/SinaElahimanesh/Refactoring-SW-Lab/assets/59636948/6524dd98-d0c6-49a4-a430-a352b90e2df8">
+
+<img width="526" alt="Screenshot 1402-05-21 at 12 48 18 PM" src="https://github.com/SinaElahimanesh/Refactoring-SW-Lab/assets/59636948/1c7d012d-6edf-4bb7-80dd-878568769c21">
+
+
+## بازآرایی‌های دیگر (Extract Method)
+
+
 
 
 
