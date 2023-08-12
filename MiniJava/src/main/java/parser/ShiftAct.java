@@ -16,3 +16,4 @@ public class ShiftAct extends Action {
         return "shift";
     }
 }
+
