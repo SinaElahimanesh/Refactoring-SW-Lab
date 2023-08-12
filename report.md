@@ -4,7 +4,10 @@
 
 ### بازآرایی Facade (دو مورد)
 برای این بازآرایی دو کلاس CodeGenerator و ٍLexialAnalyzer را مورد بازآرایی قرار دادیم و دور آنها Facade کشیدیم. به این ترتیب که دسترسی به آنها از طریق فسادشان امکان‌پذیر شده است. همچنین باید تمامی متدهایی که برای دسترسی به آنها لازم است را هم به فسادشان منتقل کنیم. به این ترتیب در تصاویر زیر داریم:
+<div style="text-align:center">
+ 
 <img width="889" alt="Screenshot 1402-05-21 at 12 04 53 PM" src="https://github.com/SinaElahimanesh/Refactoring-SW-Lab/assets/59636948/f9380814-6c79-4f10-a29e-b98007650eec">
+</div>
 
 <img width="789" alt="Screenshot 1402-05-21 at 12 05 11 PM" src="https://github.com/SinaElahimanesh/Refactoring-SW-Lab/assets/59636948/3cb58107-e52e-4af5-a9f3-c23c5163765d">
 
