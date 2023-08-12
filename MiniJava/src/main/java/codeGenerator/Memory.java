@@ -20,8 +20,11 @@ public class Memory {
         lastDataAddress = stratDataMemoryAddress;
     }
 
-    public int getTemp() {
+    public void increaseTemp() {
         lastTempIndex += tempSize;
+    }
+
+    public int getTemp() {
         return lastTempIndex - tempSize;
     }
 
@@ -30,8 +33,11 @@ public class Memory {
         return lastDataAddress - dataSize;
     }
 
-    public int saveMemory() {
+    public void saveMemory() {
         codeBlock.add(new _3AddressCode());
+    }
+
+    public int getMemory() {
         return codeBlock.size() - 1;
     }
 
