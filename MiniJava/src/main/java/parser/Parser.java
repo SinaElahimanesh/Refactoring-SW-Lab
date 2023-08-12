@@ -8,10 +8,8 @@ import java.util.Stack;
 
 import Log.Log;
 import codeGenerator.CGFacade;
-import codeGenerator.CodeGenerator;
 import errorHandler.ErrorHandler;
 import scanner.LAFacade;
-import scanner.lexicalAnalyzer;
 import scanner.token.Token;
 
 public class Parser {
@@ -22,34 +20,34 @@ public class Parser {
     private CGFacade cgFacade;
 
     public Parser() {
-        parsStack = new Stack<Integer>();
-        parsStack.push(0);
+        setParsStack(new Stack<Integer>());
+        getParsStack().push(0);
         try {
-            parseTable = new ParseTable(Files.readAllLines(Paths.get("src/main/resources/parseTable")).get(0));
+            setParseTable(new ParseTable(Files.readAllLines(Paths.get("src/main/resources/parseTable")).get(0)));
         } catch (Exception e) {
             e.printStackTrace();
         }
-        rules = new ArrayList<Rule>();
+        setRules(new ArrayList<Rule>());
         try {
             for (String stringRule : Files.readAllLines(Paths.get("src/main/resources/Rules"))) {
-                rules.add(new Rule(stringRule));
+                getRules().add(new Rule(stringRule));
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
-        cgFacade = new CGFacade();
+        setCgFacade(new CGFacade());
     }
 
     public void startParse(java.util.Scanner sc) {
-        lexicalAnalyzerFacade = new LAFacade(sc);
-        Token lookAhead = lexicalAnalyzerFacade.getNextToken();
+        setLexicalAnalyzerFacade(new LAFacade(sc));
+        Token lookAhead = getLexicalAnalyzerFacade().getNextToken();
         boolean finish = false;
         Action currentAction;
         while (!finish) {
             try {
-                Log.print(/*"lookahead : "+*/ lookAhead.toString() + "\t" + parsStack.peek());
+                Log.print(/*"lookahead : "+*/ lookAhead.toString() + "\t" + getParsStack().peek());
 //                Log.print("state : "+ parsStack.peek());
-                currentAction = parseTable.getActionTable(parsStack.peek(), lookAhead);
+                currentAction = getParseTable().getActionTable(getParsStack().peek(), lookAhead);
                 Log.print(currentAction.toString());
                 //Log.print("");
 
@@ -84,22 +82,22 @@ public class Parser {
 //                    parsStack.pop();
             }
         }
-        if (!ErrorHandler.hasError) cgFacade.printMemory();
+        if (!ErrorHandler.hasError) getCgFacade().printMemory();
     }
 
     private void extracted(Token lookAhead, Action currentAction) {
-        Rule rule = rules.get(currentAction.number);
+        Rule rule = getRules().get(currentAction.number);
         for (int i = 0; i < rule.RHS.size(); i++) {
-            parsStack.pop();
+            getParsStack().pop();
         }
 
-        Log.print(/*"state : " +*/ parsStack.peek() + "\t" + rule.LHS);
+        Log.print(/*"state : " +*/ getParsStack().peek() + "\t" + rule.LHS);
 //                        Log.print("LHS : "+rule.LHS);
-        parsStack.push(parseTable.getGotoTable(parsStack.peek(), rule.LHS));
-        Log.print(/*"new State : " + */parsStack.peek() + "");
+        getParsStack().push(getParseTable().getGotoTable(getParsStack().peek(), rule.LHS));
+        Log.print(/*"new State : " + */getParsStack().peek() + "");
 //                        Log.print("");
         try {
-            cgFacade.semanticFunction(rule.semanticAction, lookAhead);
+            getCgFacade().semanticFunction(rule.semanticAction, lookAhead);
         } catch (Exception e) {
             Log.print("Code Genetator Error");
         }
@@ -108,8 +106,48 @@ public class Parser {
 
     private Token getToken(Action currentAction) {
         Token lookAhead;
-        parsStack.push(currentAction.number);
-        lookAhead = lexicalAnalyzerFacade.getNextToken();
+        getParsStack().push(currentAction.number);
+        lookAhead = getLexicalAnalyzerFacade().getNextToken();
         return lookAhead;
+    }
+
+    public ArrayList<Rule> getRules() {
+        return rules;
+    }
+
+    public void setRules(ArrayList<Rule> rules) {
+        this.rules = rules;
+    }
+
+    public Stack<Integer> getParsStack() {
+        return parsStack;
+    }
+
+    public void setParsStack(Stack<Integer> parsStack) {
+        this.parsStack = parsStack;
+    }
+
+    public ParseTable getParseTable() {
+        return parseTable;
+    }
+
+    public void setParseTable(ParseTable parseTable) {
+        this.parseTable = parseTable;
+    }
+
+    public LAFacade getLexicalAnalyzerFacade() {
+        return lexicalAnalyzerFacade;
+    }
+
+    public void setLexicalAnalyzerFacade(LAFacade lexicalAnalyzerFacade) {
+        this.lexicalAnalyzerFacade = lexicalAnalyzerFacade;
+    }
+
+    public CGFacade getCgFacade() {
+        return cgFacade;
+    }
+
+    public void setCgFacade(CGFacade cgFacade) {
+        this.cgFacade = cgFacade;
     }
 }
