@@ -2,7 +2,7 @@
 
 ## گزارش
 
-### بازآرایی Facade
+### بازآرایی Facade (دو مورد)
 برای این بازآرایی دو کلاس CodeGenerator و ٍLexialAnalyzer را مورد بازآرایی قرار دادیم و دور آنها Facade کشیدیم. به این ترتیب که دسترسی به آنها از طریق فسادشان امکان‌پذیر شده است. همچنین باید تمامی متدهایی که برای دسترسی به آنها لازم است را هم به فسادشان منتقل کنیم. به این ترتیب در تصاویر زیر داریم:
 <img width="889" alt="Screenshot 1402-05-21 at 12 04 53 PM" src="https://github.com/SinaElahimanesh/Refactoring-SW-Lab/assets/59636948/f9380814-6c79-4f10-a29e-b98007650eec">
 
@@ -32,19 +32,34 @@
 
 
  ## بازآرایی Separate Query From Modifier
- این بازآرایی را در کلاس Memory روی دو تابع saveMemory و getTemp انجام داده‌ایم. همچنین روی توابع دیگر این کلاس نظیر getDateAddress هم این کار ممکن است. به این ترتیب که تغییرات را از گرفتن مقدار جدا کرده‌ایم و دو تابع جدا کرده‌ایم.
+ این بازآرایی را در کلاس Memory روی تابع getTemp انجام داده‌ایم. همچنین روی توابع دیگر این کلاس نظیر getDateAddress هم این کار ممکن است. به این ترتیب که تغییرات را از گرفتن مقدار جدا کرده‌ایم و دو تابع جدا کرده‌ایم.
  
-<img width="686" alt="Screenshot 1402-05-21 at 12 28 17 PM" src="https://github.com/SinaElahimanesh/Refactoring-SW-Lab/assets/59636948/da6274c8-6719-4901-8526-44005f511ac9">
-
-سپس در جاهایی که از آنها استفاده شده است هر دو تابع را صدا می‌زنیم.
-
-<img width="1044" alt="Screenshot 1402-05-21 at 12 29 00 PM" src="https://github.com/SinaElahimanesh/Refactoring-SW-Lab/assets/59636948/beb35311-5711-4ed2-8b4a-626c85ea195a">
-
-<img width="714" alt="Screenshot 1402-05-21 at 12 29 21 PM" src="https://github.com/SinaElahimanesh/Refactoring-SW-Lab/assets/59636948/59a84ec1-ea9e-4539-8a1a-cb8efd30aee3">
-
-(تعداد این موارد زیاد بود و فقط دو مورد از آنها را آورده‌ایم)
+ <img width="626" alt="Screenshot 1402-05-21 at 12 32 46 PM" src="https://github.com/SinaElahimanesh/Refactoring-SW-Lab/assets/59636948/4d5a5223-b960-4063-8fee-0049413e252e">
 
 
+سپس در جاهایی که از آن استفاده شده است هر دو تابع را صدا می‌زنیم.
+<img width="789" alt="Screenshot 1402-05-21 at 12 33 22 PM" src="https://github.com/SinaElahimanesh/Refactoring-SW-Lab/assets/59636948/a99e290e-a682-4110-8efb-d1f70c4126aa">
+
+<img width="822" alt="Screenshot 1402-05-21 at 12 33 37 PM" src="https://github.com/SinaElahimanesh/Refactoring-SW-Lab/assets/59636948/191896d6-4799-4df6-8e19-4363f8879356">
+
+<img width="792" alt="Screenshot 1402-05-21 at 12 33 49 PM" src="https://github.com/SinaElahimanesh/Refactoring-SW-Lab/assets/59636948/edc9c756-ec84-4c9a-8d4c-bead58533b17">
+
+<img width="744" alt="Screenshot 1402-05-21 at 12 34 01 PM" src="https://github.com/SinaElahimanesh/Refactoring-SW-Lab/assets/59636948/b7de183b-8ee3-4120-991e-1cfbd7bc5070">
+
+
+## بازآرایی های دیگر (Separate Query From Modifier)
+
+در اینجا در Memory تابع saveMemory را هم مانند قسمت قبل گرفتن مقدار و تغییرات را از هم جدا می‌کنیم. در نتیجه می‌توان به صورت در هرجایی که تابع اول صدا زده می‌شود تابع دوم را هم صدا زد.
+
+<img width="640" alt="Screenshot 1402-05-21 at 12 36 05 PM" src="https://github.com/SinaElahimanesh/Refactoring-SW-Lab/assets/59636948/e5a34ab9-41c4-44ee-b96c-1b6ca758a7cb">
+
+در نتیجه باید تغییرات را در کاربرد آن هم اعمال کنیم.
+
+<img width="683" alt="Screenshot 1402-05-21 at 12 37 07 PM" src="https://github.com/SinaElahimanesh/Refactoring-SW-Lab/assets/59636948/83202504-c8bf-4578-8d17-df209e9c6ceb">
+
+<img width="1027" alt="Screenshot 1402-05-21 at 12 37 18 PM" src="https://github.com/SinaElahimanesh/Refactoring-SW-Lab/assets/59636948/4f52bbef-325b-49be-9c00-99d40e7e49c2">
+
+## بازآرایی‌های دیگر 
 
 
 
