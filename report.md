@@ -4,12 +4,7 @@
 
 ### بازآرایی Facade (دو مورد)
 برای این بازآرایی دو کلاس CodeGenerator و ٍLexialAnalyzer را مورد بازآرایی قرار دادیم و دور آنها Facade کشیدیم. به این ترتیب که دسترسی به آنها از طریق فسادشان امکان‌پذیر شده است. همچنین باید تمامی متدهایی که برای دسترسی به آنها لازم است را هم به فسادشان منتقل کنیم. به این ترتیب در تصاویر زیر داریم:
-<center>
- 
-
- 
 <img width="889" alt="Screenshot 1402-05-21 at 12 04 53 PM" src="https://github.com/SinaElahimanesh/Refactoring-SW-Lab/assets/59636948/f9380814-6c79-4f10-a29e-b98007650eec">
-</center>
 
 <img width="789" alt="Screenshot 1402-05-21 at 12 05 11 PM" src="https://github.com/SinaElahimanesh/Refactoring-SW-Lab/assets/59636948/3cb58107-e52e-4af5-a9f3-c23c5163765d">
 
@@ -77,7 +72,15 @@
 <img width="526" alt="Screenshot 1402-05-21 at 12 48 18 PM" src="https://github.com/SinaElahimanesh/Refactoring-SW-Lab/assets/59636948/1c7d012d-6edf-4bb7-80dd-878568769c21">
 
 
-## بازآرایی‌های دیگر (Extract Method)
+## بازآرایی‌های دیگر (Self Encapsulate Field)
+
+در این قسمت کافیست به کلاس Parser دقت کنیم. در این کلاس در واقع تعداد زیادی فیلد private داریم درحالی که همگی آنها با دسترسی مستقیم از بیرون دسترسی گرفته‌اند و ست و گت شده‌اند. کافیست برای آنها گتر و ستر تعریف کنیم و دسترسی‌ها را از طریق این گتر و سترها انجام دهیم.
+
+<img width="577" alt="Screenshot 1402-05-21 at 12 53 29 PM" src="https://github.com/SinaElahimanesh/Refactoring-SW-Lab/assets/59636948/224434e1-2555-4131-8c30-9ed291db35d4">
+
+<img width="705" alt="Screenshot 1402-05-21 at 12 53 50 PM" src="https://github.com/SinaElahimanesh/Refactoring-SW-Lab/assets/59636948/7846cff6-1c22-49a1-81df-c684dff2d9ee">
+
+
 
 
 
