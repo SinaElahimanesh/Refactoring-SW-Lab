@@ -55,26 +55,10 @@ public class Parser {
 
                 switch (currentAction.getAction()) {
                     case "shift":
-                        parsStack.push(currentAction.number);
-                        lookAhead = lexicalAnalyzerFacade.getNextToken();
-
+                        lookAhead = getToken(currentAction);
                         break;
                     case "reduce":
-                        Rule rule = rules.get(currentAction.number);
-                        for (int i = 0; i < rule.RHS.size(); i++) {
-                            parsStack.pop();
-                        }
-
-                        Log.print(/*"state : " +*/ parsStack.peek() + "\t" + rule.LHS);
-//                        Log.print("LHS : "+rule.LHS);
-                        parsStack.push(parseTable.getGotoTable(parsStack.peek(), rule.LHS));
-                        Log.print(/*"new State : " + */parsStack.peek() + "");
-//                        Log.print("");
-                        try {
-                            cgFacade.semanticFunction(rule.semanticAction, lookAhead);
-                        } catch (Exception e) {
-                            Log.print("Code Genetator Error");
-                        }
+                        extracted(lookAhead, currentAction);
                         break;
                     case "accept":
                         finish = true;
@@ -101,5 +85,31 @@ public class Parser {
             }
         }
         if (!ErrorHandler.hasError) cgFacade.printMemory();
+    }
+
+    private void extracted(Token lookAhead, Action currentAction) {
+        Rule rule = rules.get(currentAction.number);
+        for (int i = 0; i < rule.RHS.size(); i++) {
+            parsStack.pop();
+        }
+
+        Log.print(/*"state : " +*/ parsStack.peek() + "\t" + rule.LHS);
+//                        Log.print("LHS : "+rule.LHS);
+        parsStack.push(parseTable.getGotoTable(parsStack.peek(), rule.LHS));
+        Log.print(/*"new State : " + */parsStack.peek() + "");
+//                        Log.print("");
+        try {
+            cgFacade.semanticFunction(rule.semanticAction, lookAhead);
+        } catch (Exception e) {
+            Log.print("Code Genetator Error");
+        }
+        return;
+    }
+
+    private Token getToken(Action currentAction) {
+        Token lookAhead;
+        parsStack.push(currentAction.number);
+        lookAhead = lexicalAnalyzerFacade.getNextToken();
+        return lookAhead;
     }
 }
