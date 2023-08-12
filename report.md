@@ -2,7 +2,7 @@
 
 ## گزارش
 
-### بازآرایی Facade (دو مورد)
+### 1-2- بازآرایی Facade (دو مورد)
 برای این بازآرایی دو کلاس CodeGenerator و ٍLexialAnalyzer را مورد بازآرایی قرار دادیم و دور آنها Facade کشیدیم. به این ترتیب که دسترسی به آنها از طریق فسادشان امکان‌پذیر شده است. همچنین باید تمامی متدهایی که برای دسترسی به آنها لازم است را هم به فسادشان منتقل کنیم. به این ترتیب در تصاویر زیر داریم:
 <img width="889" alt="Screenshot 1402-05-21 at 12 04 53 PM" src="https://github.com/SinaElahimanesh/Refactoring-SW-Lab/assets/59636948/f9380814-6c79-4f10-a29e-b98007650eec">
 
@@ -12,7 +12,7 @@
 <img width="1014" alt="Screenshot 1402-05-21 at 12 08 47 PM" src="https://github.com/SinaElahimanesh/Refactoring-SW-Lab/assets/59636948/68ac059e-2bae-4b3c-aa38-5b21ce423e9e">
 
 
-## بازآرایی استفاده از Polymorphism به جای شرط
+## 3- بازآرایی استفاده از Polymorphism به جای شرط
 در این بازآرایی کلاس Action را به یک ابسترکت کلاس تبدیل می‌کنیم و سپس فیلد اکشن را از آن حذف می‌کنیم و فقط getAction می‌زنیم. سپس سه کلاس می‌زنیم که از آن extend می‌کنند. هریک از این کلاس‌ها از پلیمورفیسم استفاده می‌کنیم و ان استرینگ‌ها را override می‌کنیم.
 <img width="540" alt="Screenshot 1402-05-21 at 12 19 58 PM" src="https://github.com/SinaElahimanesh/Refactoring-SW-Lab/assets/59636948/902acfd5-c63c-490e-a904-76ae9ff844ac">
 
@@ -31,7 +31,7 @@
 <img width="1045" alt="Screenshot 1402-05-21 at 12 24 26 PM" src="https://github.com/SinaElahimanesh/Refactoring-SW-Lab/assets/59636948/6be5dc3a-4a3f-4b53-9b70-f388cdc490d6">
 
 
- ## بازآرایی Separate Query From Modifier
+ ## 4- بازآرایی Separate Query From Modifier
  این بازآرایی را در کلاس Memory روی تابع getTemp انجام داده‌ایم. همچنین روی توابع دیگر این کلاس نظیر getDateAddress هم این کار ممکن است. به این ترتیب که تغییرات را از گرفتن مقدار جدا کرده‌ایم و دو تابع جدا کرده‌ایم.
  
  <img width="626" alt="Screenshot 1402-05-21 at 12 32 46 PM" src="https://github.com/SinaElahimanesh/Refactoring-SW-Lab/assets/59636948/4d5a5223-b960-4063-8fee-0049413e252e">
@@ -47,7 +47,7 @@
 <img width="744" alt="Screenshot 1402-05-21 at 12 34 01 PM" src="https://github.com/SinaElahimanesh/Refactoring-SW-Lab/assets/59636948/b7de183b-8ee3-4120-991e-1cfbd7bc5070">
 
 
-## بازآرایی های دیگر (Separate Query From Modifier)
+## 5- بازآرایی های دیگر (Separate Query From Modifier)
 
 در اینجا در Memory تابع saveMemory را هم مانند قسمت قبل گرفتن مقدار و تغییرات را از هم جدا می‌کنیم. در نتیجه می‌توان به صورت در هرجایی که تابع اول صدا زده می‌شود تابع دوم را هم صدا زد.
 
@@ -59,7 +59,7 @@
 
 <img width="1027" alt="Screenshot 1402-05-21 at 12 37 18 PM" src="https://github.com/SinaElahimanesh/Refactoring-SW-Lab/assets/59636948/4f52bbef-325b-49be-9c00-99d40e7e49c2">
 
-## بازآرایی‌های دیگر (Extract Method)
+## 6- بازآرایی‌های دیگر (Extract Method)
 
 در اینجا هنگامی که به Parser و داخل switch case ان نگاه می‌کنیم میبینیم که دو مورد از کیس‌ها بسیار طولانی هستند و همچنین مواردی به هم مرتبط و کدی یکپارچه دارند. هرچند که این کد به هم مرتبط و یکپارچه قابل جداسازی است و می‌تواند تبدیل به یک متد شود ولی به صورت اضافی این کیس‌ها را طولانی کرده است و به این ترتیب به صورت نامطلوبی وجود دارد. در نتیجه این دو قسمت را اکسترکت متد می‌کنیم.
 
@@ -72,7 +72,7 @@
 <img width="526" alt="Screenshot 1402-05-21 at 12 48 18 PM" src="https://github.com/SinaElahimanesh/Refactoring-SW-Lab/assets/59636948/1c7d012d-6edf-4bb7-80dd-878568769c21">
 
 
-## بازآرایی‌های دیگر (Self Encapsulate Field)
+## 7- بازآرایی‌های دیگر (Self Encapsulate Field)
 
 در این قسمت کافیست به کلاس Parser دقت کنیم. در این کلاس در واقع تعداد زیادی فیلد private داریم درحالی که همگی آنها با دسترسی مستقیم از بیرون دسترسی گرفته‌اند و ست و گت شده‌اند. کافیست برای آنها گتر و ستر تعریف کنیم و دسترسی‌ها را از طریق این گتر و سترها انجام دهیم.
 
